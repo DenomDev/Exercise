@@ -1,7 +1,8 @@
 <script>
-    import { FirebaseApp, User, Doc, Collection } from "sveltefire";
-    import firebase from "firebase/app";
-    import "firebase/auth";
+    //🦖🦖🦖 - unused imports 
+    // import { FirebaseApp, User, Doc, Collection } from "sveltefire";
+    // import firebase from "firebase/app";
+    // import "firebase/auth";
     import { user } from "./models";
 
     export let auth, error, view;
@@ -9,7 +10,7 @@
 
         <div class="mt-8 space-y-6">
             <input type="hidden" name="remember" value="true" />
-            <div class="rounded-md shadow-sm -space-y-px">
+            <div class="-space-y-px rounded-md shadow-sm">
                 <div>
                     <label for="email-address" class="sr-only">Email address</label>
                     <input
@@ -19,7 +20,7 @@
                         autocomplete="email"
                         bind:value={$user.email}
                         required
-                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        class="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Email address" />
                 </div>
                 <div>
@@ -31,11 +32,12 @@
                         bind:value={$user.password}
                         autocomplete="current-password"
                         required
-                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        class="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Password" />
                 </div>
             </div>
             <div>
+                <!--🦖🦖🦖 - autofocus not needed there, and not advised https://www.a11yproject.com/checklist/#avoid-using-the-lesscodegreaterautofocusless/codegreater-attribute -->
                 <button
                 autofocus={true}
                     on:click={() => auth
@@ -48,12 +50,12 @@
                                 error.message = err.message;
                                 error.flag = true;
                             })}
-                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    class="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <span
-                        class="absolute left-0 inset-y-0 flex items-center pl-3">
+                        class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <!-- Heroicon name: lock-closed -->
                         <svg
-                            class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                            class="w-5 h-5 text-indigo-500 group-hover:text-indigo-400"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                             fill="currentColor"
@@ -67,9 +69,11 @@
                     Sign in
                 </button>
             </div>
-            <p class="mt-2 text-center text-sm text-gray-600">
+            <p class="mt-2 text-sm text-center text-gray-600">
                 Or
+                <!-- 🦖🦖🦖 type="button" , same for signup -->
                 <button
+                type="button"
                     on:click={() => view = 1}
                     class="font-medium text-indigo-600 hover:text-indigo-500">
                     Sign Up

@@ -5,10 +5,11 @@
 	import "firebase/auth";
 	import "firebase/performance";
 	import "firebase/analytics";
-	import SignIn from "./SignIn.svelte";
+	//import SignIn from "./SignIn.svelte";
 	import Entry from "./Entry.svelte";
 	import Account from "./Account.svelte";
 
+	//🦖🦖🦖 - never show this in public repos 
 	const config = {
 		apiKey: "AIzaSyBShi3-2yOvgv2OKSUzCpP8mkKerxseaRY",
 		authDomain: "exercise-8b151.firebaseapp.com",
@@ -19,11 +20,13 @@
 	};
 	firebase.initializeApp(config);
 
-	let _auth = firebase.auth()
+	//🦖🦖🦖 - why there?
+	//let _auth = firebase.auth()
 
-	firebase.auth().onAuthStateChanged((user) => {
+	//🦖🦖🦖 - purpose ?
+	//firebase.auth().onAuthStateChanged((user) => {
 
-	})
+	// })
 </script>
 
 <style global lang="postcss">
@@ -42,8 +45,13 @@
 {/if}
 
 <FirebaseApp {firebase}>
-	<User let:user let:auth>
-		<Collection
+<!--🦖🦖🦖 persist={localStorage} to avoid 'login view flashing' on reload -->	
+	<User persist={localStorage} let:user let:auth>
+		
+		<!-- 🦖🦖🦖 Moving following Collection users and Doc  user to Account 
+			as we used them only there (better to keep components independent as much as possible   )
+			
+			<Collection
 			path={'users'}
 			let:data={usersData}
 			let:ref={usersDataRef}
@@ -53,12 +61,12 @@
 				path={usersDataRef.doc(user.uid)}
 				let:data={userData}
 				let:ref={userDataRef}
-				log>
-				<Account {userData} {usersData} bind:auth={_auth} />
+				log> -->
+				<Account uid={user.uid} {auth} />
 
 				<span slot="loading">Loading data...</span>
-			</Doc>
-		</Collection>
+			<!-- </Doc>
+		</Collection> -->
 		<div slot="signed-out">
 			<Entry {auth} />
 		</div>
