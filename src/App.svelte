@@ -11,12 +11,7 @@
 
 	//🦖🦖🦖 - never show this in public repos 
 	const config = {
-		apiKey: "AIzaSyBShi3-2yOvgv2OKSUzCpP8mkKerxseaRY",
-		authDomain: "exercise-8b151.firebaseapp.com",
-		projectId: "exercise-8b151",
-		storageBucket: "exercise-8b151.appspot.com",
-		messagingSenderId: "1004565852844",
-		appId: "1:1004565852844:web:da67564b9edf0a3d1ba509",
+	
 	};
 	firebase.initializeApp(config);
 
